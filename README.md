@@ -1,0 +1,85 @@
+# Iolaus
+
+> **Warning:** This project is under active development and is not yet stable. APIs may change without notice.
+
+A lightweight Python framework for research data analysis projects. Iolaus wires together [Dynaconf](https://www.dynaconf.com/), [Typer](https://typer.tiangolo.com/), and a custom run-logging system into a single decorator-based API that adds automatic configuration management and reproducible run artifacts on every invocation.
+
+## Features
+
+- **Decorator-based API** — feels like FastAPI/Typer, with zero boilerplate
+- **Automatic config management** — merge base settings, extra config files, and CLI overrides
+- **Reproducible run artifacts** — every command run produces a timestamped output directory with a config snapshot and log file
+- **Opt-in injection** — `settings` and `run_dir` are only injected if your function declares them
+
+## Quick example
+
+```python
+from pathlib import Path
+from dynaconf import Dynaconf
+import typer
+from iolaus import command
+
+app = typer.Typer()
+settings = Dynaconf(settings_files=["settings.toml"], envvar_prefix="MYAPP")
+cmd = command(app, settings)
+
+@cmd
+def analyze(
+    input: Path,
+    verbose: bool = False,
+    settings=None,   # injected by Iolaus
+    run_dir: Path = None,  # injected by Iolaus
+):
+    """Run the analysis pipeline."""
+    ...
+
+if __name__ == "__main__":
+    app()
+```
+
+```bash
+# Base invocation
+python cli.py analyze data.csv
+
+# Merge an extra config file
+python cli.py analyze data.csv --config prod.yaml
+
+# Override individual keys
+python cli.py analyze data.csv --set model__lr=0.01 --set db__host=remote
+```
+
+Every run produces:
+
+```
+outputs/
+└── analyze/
+    └── 2025-03-29/
+        └── 14-32-05/
+            ├── run.log
+            └── config.json
+```
+
+## Installation
+
+```bash
+pip install iolaus
+```
+
+Or with uv:
+
+```bash
+uv add iolaus
+```
+
+## Development
+
+```bash
+git clone https://github.com/vgreg/iolaus.git
+cd iolaus
+uv sync --all-extras
+uv run pytest
+```
+
+## License
+
+MIT
