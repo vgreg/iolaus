@@ -37,6 +37,10 @@ select = ["E", "F", "I", "UP"]
 [tool.mypy]
 strict = true
 
+[[tool.mypy.overrides]]
+module = ["dynaconf", "dynaconf.*"]
+ignore_missing_imports = true
+
 [tool.bumpversion]
 current_version = "0.1.0"
 commit = true
