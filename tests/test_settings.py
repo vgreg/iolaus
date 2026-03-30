@@ -15,9 +15,7 @@ def test_build_settings_base_only(base_settings: Dynaconf) -> None:
     assert merged.db.host == "localhost"
 
 
-def test_build_settings_extra_config(
-    base_settings: Dynaconf, tmp_path: Path
-) -> None:
+def test_build_settings_extra_config(base_settings: Dynaconf, tmp_path: Path) -> None:
     """An extra config file overrides matching keys."""
     extra = tmp_path / "extra.toml"
     extra.write_text('[db]\nhost = "remote"\n')

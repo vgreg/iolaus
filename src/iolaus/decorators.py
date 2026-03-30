@@ -38,8 +38,7 @@ _EXTRA_PARAMS = [
                 "--set",
                 "-s",
                 help=(
-                    "Override a config value."
-                    " Use __ for nesting: --set model__lr=0.01"
+                    "Override a config value. Use __ for nesting: --set model__lr=0.01"
                 ),
             ),
         ],

@@ -76,9 +76,7 @@ def test_extra_config_merges(
         captured["settings"] = settings
 
     _make_multi_command(app)
-    result = runner.invoke(
-        app, ["run-cmd", "--config", str(extra)]
-    )
+    result = runner.invoke(app, ["run-cmd", "--config", str(extra)])
     assert result.exit_code == 0
     assert captured["settings"].db.host == "remote"  # type: ignore[union-attr]
 
