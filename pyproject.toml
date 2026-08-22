@@ -4,7 +4,36 @@ version = "0.1.0"
 description = "Decorator-based CLI + config + logging framework for research projects."
 readme = "README.md"
 requires-python = ">=3.11"
-license = { text = "MIT" }
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [
+    { name = "Vincent Grégoire", email = "vincent.gregoire@gmail.com" },
+]
+keywords = [
+    "cli",
+    "configuration",
+    "logging",
+    "research",
+    "reproducibility",
+    "data-analysis",
+    "dynaconf",
+    "typer",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Typing :: Typed",
+]
 dependencies = [
     "dynaconf>=3.2",
     "typer>=0.12",
@@ -23,6 +52,13 @@ docs = [
     "mkdocs-material>=9.0",
     "mkdocstrings[python]",
 ]
+
+[project.urls]
+Homepage = "https://github.com/vgreg/iolaus"
+Documentation = "https://www.vincentgregoire.com/iolaus/"
+Repository = "https://github.com/vgreg/iolaus"
+Issues = "https://github.com/vgreg/iolaus/issues"
+Changelog = "https://github.com/vgreg/iolaus/blob/main/CHANGELOG.md"
 
 [build-system]
 requires = ["hatchling"]
@@ -50,3 +86,8 @@ tag = true
 filename = "pyproject.toml"
 search = 'version = "{current_version}"'
 replace = 'version = "{new_version}"'
+
+[[tool.bumpversion.files]]
+filename = "src/iolaus/__init__.py"
+search = '__version__ = "{current_version}"'
+replace = '__version__ = "{new_version}"'
