@@ -1,6 +1,6 @@
 [project]
 name = "iolaus"
-version = "0.1.0"
+version = "0.1.1"
 description = "Decorator-based CLI + config + logging framework for research projects."
 readme = "README.md"
 requires-python = ">=3.11"
@@ -78,7 +78,7 @@ module = ["dynaconf", "dynaconf.*"]
 ignore_missing_imports = true
 
 [tool.bumpversion]
-current_version = "0.1.0"
+current_version = "0.1.1"
 commit = true
 tag = true
 
