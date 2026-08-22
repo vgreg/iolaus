@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-08-22
+
 ### Fixed
 
 - `--set` overrides are now parsed as TOML, so `--set model__lr=0.01` yields the float `0.01` rather than the string `"0.01"`. Values that are not valid TOML (bare paths, unquoted text, values containing `=`) still fall back to strings.
@@ -23,5 +25,6 @@ Initial release.
 - Opt-in injection of `settings` and `run_dir`, only for functions that declare them in their signature.
 - Type annotations throughout, with a `py.typed` marker for downstream type checkers.
 
-[Unreleased]: https://github.com/vgreg/iolaus/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/vgreg/iolaus/compare/v0.1.1...HEAD
+[0.1.1]: https://github.com/vgreg/iolaus/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/vgreg/iolaus/releases/tag/v0.1.0
