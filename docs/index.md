@@ -43,6 +43,25 @@ outputs/
             └── config.json
 ```
 
+## Relationship to Hydra
+
+Iolaus is inspired by [Hydra](https://hydra.cc/), which established the pattern of composable configuration files combined with timestamped output directories for research code. Iolaus is deliberately a lightweight alternative implementing only the subset of Hydra's features that I actually use in my own projects, built on [Dynaconf](https://www.dynaconf.com/) and [Typer](https://typer.tiangolo.com/) rather than on OmegaConf.
+
+The trade-off is scope. Iolaus gives you a decorator, config merging, and a run directory, and nothing else. Hydra gives you a much larger system:
+
+| | Iolaus | Hydra |
+| --- | --- | --- |
+| Config merging from files | Yes | Yes |
+| CLI key overrides | Yes | Yes |
+| Timestamped run directories | Yes | Yes |
+| Config groups and defaults lists | No | Yes |
+| Multirun and parameter sweeps | No | Yes |
+| Structured (typed) configs | No | Yes |
+| Object instantiation from config | No | Yes |
+| Launcher plugins (Slurm, Ray, etc.) | No | Yes |
+
+If Iolaus is not flexible enough, or if you need any of the features in the right-hand column, you should use Hydra instead. It is a mature and well-documented project, and Iolaus makes no attempt to match its scope.
+
 ## Next steps
 
 - [Getting Started](getting-started.md) — installation and first project
