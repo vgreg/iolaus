@@ -1,3 +1,8 @@
+<p align="center">
+  <img src="https://raw.githubusercontent.com/vgreg/iolaus/main/docs/assets/iolaus.webp"
+       alt="Iolaus, the companion who helped Heracles defeat the Hydra" width="200">
+</p>
+
 # Iolaus
 
 > **Warning:** This project is under active development and is not yet stable. APIs may change without notice.
