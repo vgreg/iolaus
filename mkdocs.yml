@@ -6,6 +6,8 @@ repo_name: vgreg/iolaus
 
 theme:
   name: material
+  logo: assets/iolaus.webp
+  favicon: assets/iolaus.webp
   palette:
     - scheme: default
       primary: indigo

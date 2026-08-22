@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/iolaus.webp" alt="Iolaus, the companion who helped Heracles defeat the Hydra" width="220">
+</p>
+
 # Iolaus
 
 **Iolaus** is a lightweight Python framework for research data analysis projects. It wires together [Dynaconf](https://www.dynaconf.com/), [Typer](https://typer.tiangolo.com/), and a custom run-logging system into a single decorator-based API.
@@ -26,6 +30,11 @@ def analyze(
     run_dir: Path = None,  # injected by Iolaus
 ):
     """Run the analysis pipeline."""
+    ...
+
+@cmd
+def report(settings=None):
+    """Summarize the latest run."""
     ...
 
 if __name__ == "__main__":

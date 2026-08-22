@@ -53,6 +53,11 @@ def train(settings=None, run_dir=None):
     print(f"Learning rate: {settings.model.lr}")
     print(f"Run artifacts in: {run_dir}")
 
+@cmd
+def evaluate(settings=None):
+    """Evaluate the trained model."""
+    print(f"Epochs: {settings.model.epochs}")
+
 if __name__ == "__main__":
     app()
 ```
@@ -62,6 +67,9 @@ if __name__ == "__main__":
 ```bash
 python cli.py train
 ```
+
+!!! note
+    Typer treats an application with exactly one registered command as a single-command CLI, and the command name is then left off the command line (`python cli.py --set model__lr=0.01`). These examples register two commands, so every invocation names the one to run.
 
 This creates a timestamped directory under `outputs/train/` containing:
 

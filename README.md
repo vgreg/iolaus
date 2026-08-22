@@ -1,3 +1,8 @@
+<p align="center">
+  <img src="https://raw.githubusercontent.com/vgreg/iolaus/main/docs/assets/iolaus.webp"
+       alt="Iolaus, the companion who helped Heracles defeat the Hydra" width="200">
+</p>
+
 # Iolaus
 
 > **Warning:** This project is under active development and is not yet stable. APIs may change without notice.
@@ -35,6 +40,11 @@ def analyze(
     """Run the analysis pipeline."""
     ...
 
+@cmd
+def report(settings=None):
+    """Summarize the latest run."""
+    ...
+
 if __name__ == "__main__":
     app()
 ```
@@ -49,6 +59,8 @@ python cli.py analyze data.csv --config prod.yaml
 # Override individual keys
 python cli.py analyze data.csv --set model__lr=0.01 --set db__host=remote
 ```
+
+> **Note:** Typer treats an application with exactly one registered command as a single-command CLI, and the command name is then left off the command line. These examples register two commands, so every invocation names the one to run.
 
 Every run produces:
 

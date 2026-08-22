@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+### Fixed
+
+- `--set` overrides are now parsed as TOML, so `--set model__lr=0.01` yields the float `0.01` rather than the string `"0.01"`. Values that are not valid TOML (bare paths, unquoted text, values containing `=`) still fall back to strings.
+- Corrected the quick-start examples, which registered a single command but were documented as `python cli.py <command>`. Typer collapses single-command applications, so that invocation failed with `Got unexpected extra argument(s)`. The examples now register two commands.
+
 ## [0.1.0] - 2026-08-22
 
 Initial release.
