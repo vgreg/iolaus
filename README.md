@@ -4,6 +4,8 @@
 
 A lightweight Python framework for research data analysis projects. Iolaus wires together [Dynaconf](https://www.dynaconf.com/), [Typer](https://typer.tiangolo.com/), and a custom run-logging system into a single decorator-based API that adds automatic configuration management and reproducible run artifacts on every invocation.
 
+**Documentation:** [www.vincentgregoire.com/iolaus](https://www.vincentgregoire.com/iolaus/)
+
 ## Features
 
 - **Decorator-based API** — feels like FastAPI/Typer, with zero boilerplate
@@ -79,6 +81,12 @@ cd iolaus
 uv sync --all-extras
 uv run pytest
 ```
+
+## Relationship to Hydra
+
+Iolaus is inspired by [Hydra](https://hydra.cc/), which established the pattern of composable configuration files combined with timestamped output directories for research code. Iolaus is deliberately a lightweight alternative implementing only the subset of Hydra's features that I actually use in my own projects, built on Dynaconf and Typer rather than on OmegaConf.
+
+If Iolaus is not flexible enough, or if you need something it does not provide (config groups, multirun parameter sweeps, structured configs, object instantiation, or launcher plugins for clusters), you should use Hydra instead. It is a mature and well-documented project, and Iolaus makes no attempt to match its scope.
 
 ## License
 

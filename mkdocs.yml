@@ -1,5 +1,6 @@
 site_name: Iolaus
 site_description: Decorator-based CLI, config, and logging framework for research projects.
+site_url: https://www.vincentgregoire.com/iolaus/
 repo_url: https://github.com/vgreg/iolaus
 repo_name: vgreg/iolaus
 
@@ -39,6 +40,7 @@ nav:
   - API Reference: api-reference.md
 
 markdown_extensions:
+  - tables
   - pymdownx.highlight
   - pymdownx.superfences
   - admonition
