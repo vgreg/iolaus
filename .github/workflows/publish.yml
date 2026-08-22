@@ -4,18 +4,34 @@ on:
   push:
     tags: ["v*"]
 
-permissions:
-  id-token: write  # required for PyPI Trusted Publishing
-
 jobs:
   publish:
     runs-on: ubuntu-latest
+
+    environment:
+      name: release
+      url: https://pypi.org/p/iolaus
+
+    permissions:
+      contents: read
+      id-token: write  # required for PyPI Trusted Publishing
+
     steps:
       - uses: actions/checkout@v4
 
       - uses: astral-sh/setup-uv@v5
 
       - run: uv sync --all-extras
+
+      - name: Check tag matches package version
+        run: |
+          TAG="${GITHUB_REF_NAME#v}"
+          VERSION=$(uv run python -c "import tomllib, pathlib; print(tomllib.loads(pathlib.Path('pyproject.toml').read_text())['project']['version'])")
+          if [ "$TAG" != "$VERSION" ]; then
+            echo "::error::Tag $GITHUB_REF_NAME does not match pyproject.toml version $VERSION"
+            exit 1
+          fi
+          echo "Tag $GITHUB_REF_NAME matches version $VERSION"
 
       - name: Run tests
         run: uv run pytest
