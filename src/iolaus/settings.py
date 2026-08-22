@@ -34,6 +34,9 @@ def build_settings(
 
     for item in overrides:
         key, _, value = item.partition("=")
-        merged.set(key.replace("__", "."), value)
+        # tomlfy parses the value as TOML so numbers, booleans, and lists keep
+        # their types instead of arriving as bare strings. Values that are not
+        # valid TOML (bare paths, unquoted text) fall back to str.
+        merged.set(key.replace("__", "."), value, tomlfy=True)
 
     return merged
