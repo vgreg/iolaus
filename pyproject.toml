@@ -81,6 +81,9 @@ ignore_missing_imports = true
 current_version = "0.1.1"
 commit = true
 tag = true
+# uv.lock records the project's own version, so refresh and stage it as part of
+# the bump commit instead of leaving it stale behind the pyproject version.
+pre_commit_hooks = ["uv lock", "git add uv.lock"]
 
 [[tool.bumpversion.files]]
 filename = "pyproject.toml"
