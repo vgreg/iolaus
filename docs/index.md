@@ -32,6 +32,11 @@ def analyze(
     """Run the analysis pipeline."""
     ...
 
+@cmd
+def report(settings=None):
+    """Summarize the latest run."""
+    ...
+
 if __name__ == "__main__":
     app()
 ```
